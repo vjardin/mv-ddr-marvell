@@ -333,7 +333,7 @@ ECHO     = @echo
 OBJ_DIR ?= $(MV_DDR_ROOT)
 
 CFLAGS = -DMV_DDR_ATF -DCONFIG_DDR4
-CFLAGS += -Wall -Werror -Os -ffreestanding -mlittle-endian -g -gdwarf-2 -nostdinc
+CFLAGS += -Wall -Werror -Wno-error=array-parameter -Wno-error=array-bounds -Wno-error=format -Os -ffreestanding -mlittle-endian -g -gdwarf-2 -nostdinc
 CFLAGS += -march=armv8-a -fpie
 CFLAGS += $(call cc_option, --param=min-pagesize=0)
 
