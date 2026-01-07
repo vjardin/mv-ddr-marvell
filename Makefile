@@ -274,6 +274,9 @@ $(shell test "`cat $(OBJ_DIR)/a3700_ddr_type 2>/dev/null`" = "$(DDR_TYPE)" || ec
 
 CFLAGS += -DCONFIG_A3700 -DSILENT_LIB
 
+# Allow external build systems to pass custom CFLAGS
+CFLAGS += $(EXTRA_CFLAGS)
+
 MV_DDR_CSRC = $(foreach DIR,$(MV_DDR_SRCPATH),$(wildcard $(DIR)/*.c))
 MV_DDR_CSRC += $(MV_DDR_DRVPATH)/mv_ddr_mc6.c
 MV_DDR_CSRC += $(MV_DDR_ROOT)/mv_ddr4_training_db.c
@@ -417,6 +420,10 @@ INCLUDE = $(addprefix -I,$(INCPATH))
 INCLUDE += $(PLAT_INCLUDES)
 
 CFLAGS += $(INCLUDE)
+
+# Allow external build systems to pass custom CFLAGS
+CFLAGS += $(EXTRA_CFLAGS)
+
 #CFLAGS += -DCONFIG_MC_STATIC
 #CFLAGS += -DCONFIG_MC_STATIC_PRINT
 #CFLAGS += -DCONFIG_PHY_STATIC
